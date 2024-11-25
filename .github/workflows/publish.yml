@@ -1,0 +1,15 @@
+name:  Publish NPM
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  release:
+    name: "Publish to NPM and release in github"
+    uses: modbus2mqtt/specification.shared/.github/workflows/publish.yml@main
+    permissions:
+      contents: write
+    secrets:
+      NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
